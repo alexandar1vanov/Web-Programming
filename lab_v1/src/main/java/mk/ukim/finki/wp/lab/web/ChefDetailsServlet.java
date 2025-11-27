@@ -39,13 +39,6 @@ public class ChefDetailsServlet extends HttpServlet {
                 .buildExchange(request, response);
         WebContext context = new WebContext(webExchange);
 
-        String method = request.getParameter("_method");
-
-        if (method.equals("delete")) {
-            String dishId = request.getParameter("dishId").toString();
-            Long chefId = Long.valueOf(request.getParameter("chefId"));
-            chefService.removeDish(chefId, dishId);
-        }
         //chef id i dish id
         Long chefId = Long.valueOf(request.getParameter("chefId"));
         String dishId = request.getParameter("dishId");

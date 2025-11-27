@@ -21,21 +21,16 @@
 </header>
 <main>
     <h2>Choose a chef:</h2>
-    <form action="/dish" method="POST">
-        <!-- Display radio buttons for each chef,
-             the value should be the chef id
-             and the displayed text should be:
-             Name: <firstName> <lastName>, Bio: <bio> -->
-        <div th:each="chef :${chefs}">
-            <input type="radio" name="chefId" th:value="${chef.id}" required/>
-            <label th:for="${chef.id}"
-                   th:text="'Name: ' + ${chef.firstName} +' '+ ${chef.lastName} +', Bio: ' +${chef.bio}"></label>
-        </div>
-<!--        <input type="radio" name="chefId" value="1"> Chef 1 <br/>-->
-<!--        <input type="radio" name="chefId" value="2"> Chef 2 <br/>-->
-<!--        <input type="radio" name="chefId" value="3"> Chef 3 <br/>-->
-        <input type="submit" value="Submit">
-    </form>
+  <form action="/dishes/chooseChef" method="POST">
+    <div th:each="chef : ${chefs}">
+      <input type="radio" name="chefId" th:id="${'chef_' + chef.id}" th:value="${chef.id}" required/>
+      <label th:for="${'chef_' + chef.id}"
+             th:text="'Name: ' + ${chef.firstName} + ' ' + ${chef.lastName} + ', Bio: ' + ${chef.bio}"></label>
+      <br/>
+    </div>
+    <input type="submit" value="Submit">
+  </form>
+
 </main>
 </body>
 </html>

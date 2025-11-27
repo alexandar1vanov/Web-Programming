@@ -27,7 +27,7 @@ public class ChefServiceImpl implements ChefService {
     @Override
     public Chef findById(Long id) {
         return chefRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Couldn't find Chef with id: " + id));
+            .orElseThrow(() -> new RuntimeException("Couldn't find Chef with id: " + id));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ChefServiceImpl implements ChefService {
         Chef chefi4 = findById(chefId);
         Dish tanjir = dishRepository.findByDishId(dishId);
 
-        if (chefi4.getDishes().stream().anyMatch(dish -> dish.getDishId().equals(dishId))) {
+        if (chefi4.getDishes().contains(tanjir)) {
             System.out.println("DISH ALREADY EXISTS");
         } else {
             chefi4.getDishes().add(tanjir);
@@ -47,8 +47,6 @@ public class ChefServiceImpl implements ChefService {
 
     @Override
     public void removeDish(Long chefId, String dishId) {
-        chefRepository.removeDish(chefId,dishId);
+        chefRepository.removeDish(chefId, dishId);
     }
-
-
 }
