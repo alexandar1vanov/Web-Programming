@@ -7,8 +7,15 @@ import java.util.List;
 public interface DishService {
     List<Dish> listDishes();
     Dish findByDishId(String dishId);
+    List<Dish> findAllDishesByChefId(Long chefId);
+
     Dish findById(Long id);
+
     Dish create(String dishId, String name, String cuisine, int preparationTime);
+
     Dish update(Long id, String dishId, String name, String cuisine, int preparationTime);
+
+
     void delete(Long id);
+
 }
