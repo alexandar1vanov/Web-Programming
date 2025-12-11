@@ -27,6 +27,16 @@ public class Chef {
     @Column(name = "bio")
     String bio;
 
-    @OneToMany(mappedBy = "chef")
+    @OneToMany(mappedBy = "chef",fetch = FetchType.EAGER)
     List<Dish> dishes;
+
+    @Override
+    public String toString() {
+        return "Chef{" +
+                "bio='" + bio + '\'' +
+                ", id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }

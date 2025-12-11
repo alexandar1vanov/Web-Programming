@@ -46,14 +46,21 @@ public class ChefDetailsServlet extends HttpServlet {
         log("chefId: " + chefId);
         log("dishId: " + dishId);
 
-
         Chef chef = chefService.findById(chefId);
         Dish dish = dishService.findByDishId(dishId);
 
         chefService.addDishToChef(chefId, dishId);
 
-        context.setVariable("chef", chef);
-        context.setVariable("dish", dish);
+        System.out.println("chef"+chef);
+        System.out.println("dish"+dish);
+
+
+        Chef chefi4 = chefService.findById(chefId);
+        Dish dishi4 = dishService.findByDishId(dishId);
+
+        context.setVariable("chef", chefi4);
+        context.setVariable("dish", dishi4);
+
 
 
         response.setContentType("text/html; charset=UTF-8");

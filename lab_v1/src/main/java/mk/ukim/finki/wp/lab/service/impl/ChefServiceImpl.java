@@ -5,8 +5,6 @@ import mk.ukim.finki.wp.lab.model.Chef;
 import mk.ukim.finki.wp.lab.model.Dish;
 import mk.ukim.finki.wp.lab.repository.jpa.ChefRepositoryJPA;
 import mk.ukim.finki.wp.lab.repository.jpa.DishRepositoryJPA;
-import mk.ukim.finki.wp.lab.repository.mock.ChefRepository;
-import mk.ukim.finki.wp.lab.repository.mock.DishRepository;
 import mk.ukim.finki.wp.lab.service.ChefService;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +31,7 @@ public class ChefServiceImpl implements ChefService {
             .orElseThrow(() -> new RuntimeException("Couldn't find Chef with id: " + id));
     }
 
+    @Transactional
     @Override
     public Chef addDishToChef(Long chefId, String dishId) {
         Chef chefi4 = findById(chefId);
@@ -41,10 +40,11 @@ public class ChefServiceImpl implements ChefService {
         if (chefi4.getDishes().contains(tanjir)) {
             System.out.println("DISH ALREADY EXISTS");
         } else {
+            tanjir.setChef(chefi4);
             chefi4.getDishes().add(tanjir);
         }
         //brato zad nas place le od pree?
-
+        dishRepository.save(tanjir);
         return chefRepository.save(chefi4);
     }
 

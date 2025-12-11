@@ -31,6 +31,18 @@ public class Dish {
     @JoinColumn(name = "chef_id")
     Chef chef;
 
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "chef=" + chef +
+                ", id=" + id +
+                ", dishId='" + dishId + '\'' +
+                ", name='" + name + '\'' +
+                ", cuisine='" + cuisine + '\'' +
+                ", preparationTime=" + preparationTime +
+                '}';
+    }
+
     public Dish(String dishId, String name, String cuisine, int preparationTime) {
         this.dishId = dishId;
         this.name = name;
