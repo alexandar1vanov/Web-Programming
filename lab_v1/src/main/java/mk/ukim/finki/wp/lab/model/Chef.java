@@ -30,6 +30,12 @@ public class Chef {
     @OneToMany(mappedBy = "chef",fetch = FetchType.EAGER)
     List<Dish> dishes;
 
+    public Chef(String firstName, String lastName, String bio) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.bio = bio;
+    }
+
     @Override
     public String toString() {
         return "Chef{" +
